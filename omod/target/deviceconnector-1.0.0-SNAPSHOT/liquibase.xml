@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+ 
+    <!--
+    	See http://wiki.openmrs.org/display/docs/Module+liquibase+File for 
+    	documentation on this file.
+    
+        See http://www.liquibase.org/manual/home#available_database_refactorings
+        for a list of supported elements and attributes
+    -->
+ 
+ 	<!-- Uncomment the changeset below if you want to make the Item class persistable, see also Item and DeviceconnectorDaoTest -->
+ 	
+	<changeSet id="deviceconnector-2016-08-02-12-21" author="raff">
+		
+		<!-- <dropForeignKeyConstraint baseTableName="deviceconnector_device" constraintName="deviceconnector_item_owner_fk"/>
+		<dropForeignKeyConstraint baseTableName="obs_device_fk" constraintName="obs_device_fk"/>
+		<dropColumn tableName="obs" columnName="device_id"/>
+		<dropTable tableName="deviceconnector_device" /> -->
+	
+		<preConditions onFail="MARK_RAN">
+			<not><tableExists tableName="deviceconnector_device"/></not>
+		</preConditions>
+		<comment>
+			Creating the deviceconnector_device table
+		</comment>
+		<createTable tableName="deviceconnector_device">
+			<column name="deviceconnector_device_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="uuid" type="char(38)">
+				<constraints nullable="false" unique="true"></constraints>
+			</column>
+			<column name="owner" type="int" />
+			<column name="description" type="varchar(255)" />
+			<column name="status" type="varchar(255)" />
+			<column name="lotNumber" type="varchar(255)" />
+			<column name="manufacturer" type="varchar(255)" />
+			<column name="manufactureDate" type="Date" />
+			<column name="expirationDate" type="Date" />
+			<column name="model" type="varchar(255)" />
+			<column name="version" type="varchar(255)" />
+			<column name="url" type="varchar(255)" />
+			<column name="note" type="varchar(255)" />
+			<column name="location" type="varchar(255)" />
+		</createTable>
+        <addForeignKeyConstraint constraintName="deviceconnector_item_owner_fk" baseTableName="deviceconnector_device" baseColumnNames="owner"  referencedTableName="users"
+                                 referencedColumnNames="user_id" />
+        <addColumn tableName="obs">
+        	<column name="device_id" type="int" />
+        </addColumn>
+        <addForeignKeyConstraint constraintName="obs_device_fk" baseTableName="obs" baseColumnNames="device_id" referencedTableName="deviceconnector_device"
+        						 referencedColumnNames="deviceconnector_device_id" />
+    </changeSet>
+ 
+</databaseChangeLog>

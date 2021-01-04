@@ -1,0 +1,7 @@
+org\openmrs\module\deviceconnector\api\impl\DeviceconnectorServiceImpl.class
+org\openmrs\module\deviceconnector\Device.class
+org\openmrs\module\deviceconnector\DeviceconnectorConfig.class
+org\openmrs\module\deviceconnector\api\dao\impl\HibernateDeviceconnectorDao.class
+org\openmrs\module\deviceconnector\api\DeviceconnectorService.class
+org\openmrs\module\deviceconnector\DeviceconnectorActivator.class
+org\openmrs\module\deviceconnector\api\dao\DeviceconnectorDao.class

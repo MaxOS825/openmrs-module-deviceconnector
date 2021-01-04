@@ -1,0 +1,2 @@
+org\openmrs\module\deviceconnector\web\controller\DeviceconnectorController.class
+org\openmrs\module\deviceconnector\extension\html\AdminList.class

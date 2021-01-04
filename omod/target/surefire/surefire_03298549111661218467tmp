@@ -1,0 +1,7 @@
+#surefire_0
+#Sun Jan 03 17:13:49 CET 2021
+serverId=openmrs_server1
+fork=false
+basedir=C\:\\Bahmni\\OpenMRS_SDK\\deviceconnector\\omod
+user.dir=C\:\\Bahmni\\OpenMRS_SDK\\deviceconnector\\omod
+localRepository=C\:\\Users\\mossa\\.m2\\repository

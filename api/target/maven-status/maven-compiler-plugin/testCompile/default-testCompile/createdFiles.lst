@@ -1,0 +1,2 @@
+org\openmrs\module\deviceconnector\DeviceconnectorServiceTest.class
+org\openmrs\module\deviceconnector\dao\DeviceconnectorDaoTest.class
